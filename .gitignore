@@ -1,0 +1,4 @@
+# macOS
+.DS_Store
+
+# The Next.js app has its own .gitignore in app/
