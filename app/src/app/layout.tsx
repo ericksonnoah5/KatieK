@@ -19,6 +19,16 @@ export const metadata: Metadata = {
   title: "Katie Kanaan",
   description:
     "Katie Kanaan — medical student at the University of Iowa Carver College of Medicine, MD Class of 2029.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Core",
+  },
 };
 
 export const viewport: Viewport = {
