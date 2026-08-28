@@ -60,7 +60,7 @@ export default function KatiePage() {
       <div className="flex min-h-screen items-center justify-center p-8">
         <div className="grid w-full max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <h1 className="mt-4 font-display text-7xl font-bold tracking-tight text-[#0f1f4d]">
+            <h1 className="mt-4 font-display text-5xl font-bold tracking-tight text-[#0f1f4d] md:text-7xl">
               Katie
               <br />
               Kanaan
@@ -70,7 +70,7 @@ export default function KatiePage() {
               MD Student
             </p>
             <div className="mt-6 h-1 w-24 rounded-full bg-[#4274D9]" />
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-500">
+            <p className="text-md mt-6 max-w-lg leading-relaxed text-gray-500 md:text-lg">
               I am a medical student at the University of Iowa Roy J. and
               Lucille A. Carver College of Medicine, MD Class of 2029. <br />{" "}
               <br /> Prior to medical school, I earned my Associate&rsquo;s of
@@ -100,7 +100,7 @@ export default function KatiePage() {
               </a>
             </div>
           </div>
-          <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/60 transition hover:shadow-black/80">
+          <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/60 transition hover:shadow-black/80 md:order-none md:w-full">
             <img
               src="/unnamed.jpg"
               alt="Katie Kanaan"
@@ -131,7 +131,7 @@ export default function KatiePage() {
             </h2>
             <div className="mt-6 h-1 w-24 rounded-full bg-[#FFFFFF]"></div>
 
-            <p className="mt-4 leading-relaxed text-white/80">
+            <p className="mt-4 leading-relaxed text-white/80 md:text-sm">
               Currently, I am interested in specializing in pediatrics! I have
               always loved working with children-- inspiring them, caring for
               them, and being a positive role model. I am not sure yet if I
@@ -146,10 +146,10 @@ export default function KatiePage() {
       {/* Projects */}
       <div id="work" className="flex flex-col items-center gap-8 p-12">
         <FadeIn className="w-full max-w-6xl">
-          <p className="font-semibold uppercase tracking-[0.3em] text-[#4274D9]">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#4274D9]">
             Experiences
           </p>
-          <h2 className="my-2 mt-2 font-display text-5xl font-bold text-[#0f1f4d]">
+          <h2 className="my-2 mt-2 font-display text-3xl font-bold text-[#0f1f4d] md:text-5xl">
             Research, Work, & Volunteer Experience
           </h2>
           <div className="mt-6 h-1 w-24 rounded-full bg-[#4274D9]" />
@@ -171,7 +171,7 @@ export default function KatiePage() {
                 </h3>
                 <div className="mt-6 h-1 w-24 rounded-full bg-[#95CCDD]"></div>
 
-                <p className="mt-3 leading-relaxed text-[#FFFFFF]">
+                <p className="mt-3 text-sm leading-relaxed text-[#FFFFFF] md:text-lg">
                   {project.desc}
                 </p>
                 <span className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">
