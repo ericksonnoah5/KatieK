@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDownToLine, ArrowUpRight, Mail, Phone } from "lucide-react";
 
+import projects from "./data.json";
+
 function FadeIn({
   children,
   className = "",
@@ -45,45 +47,6 @@ function FadeIn({
 }
 
 export default function KatiePage() {
-  const projects = [
-    {
-      title: "Pinto Bean Pressure Wraps",
-      tag: "Research Publication",
-      desc: "ABSTRACT: Identifying an optimal treatment method for verruca vulgaris can be a frustrating challenge for clinicians. We describe the use of a pinto bean pressure wrap to induce ischemic change in digital warts. This novel technique provides a low-cost, low-risk, and nearly pain-free home-based treatment option with response rates similar to those of other commonly employed methods. DOI: 10.12788/cutis.1121",
-      href: "https://pubmed.ncbi.nlm.nih.gov/39787310/",
-    },
-    {
-      title: "Childserve Inpatient Volunteer",
-      tag: "Volunteer",
-      desc: "I spent the summer of 2026 volunteering in the inpatient unit at Childserve with the children who have mental and/or physical disabilities. Some of my favorite things to do with them included reading them stories, rocking the babies to sleep, playing games, and taking them on walks to the healing gardens! ",
-      href: "https://www.childserve.org/",
-    },
-    {
-      title: "Free Mental Health Clinic Patient Examiner",
-      tag: "Volunteer",
-      desc: "As a return patient examiner, I see returning underinsured/uninsured patients at the Free Mental Health Clinic. I do their initial intake, see the patient with the provider, and write the clinical note. I have always been passionate about mental health, and it has been so rewarding to be able to connect with my community. I have been learning so much from the providers, the patients, and my peers! ",
-      href: "https://wellbeing.uiowa.edu/iowa-city-free-mental-health-clinic",
-    },
-    {
-      title: "Dermatology Medical Assistant and Mohs Laboratory Technician",
-      tag: "Work",
-      desc: "As a dermatology medical assistant before medical school, I assisted with Mohs surgeries, excisions, general dermatology office visits, and procedures. I collected patient histories and chief complaints, scribed, administered local anesthetic, gave test results, collected fungal/bacterial cultures and strep tests, and handled post-op care. As a Mohs laboratory technician, I processed surgically removed skin cancer tissue via frozen sectioning for Mohs micrographic surgery. I learned an unbelievable amount during this experience, and it further reinforced my passion for medicine. ",
-      href: "https://forefrontdermatology.com/location/clive-ia-50325/",
-    },
-    {
-      title: "Pediatrics Interest Group Member",
-      tag: "Club Involvement",
-      desc: "As a member of the Pediatrics Interest Group, I have had the opportunity to attend a variety of panels to expand my knowledge of the field of pediatrics. Some of my favorite sessions I have attended include the following: Looking out for Littles/Child Abuse Pediatrics, Parents of Children with Special Needs, PICU/NICU Pediatrician Panel, etc. Additionally, I help out with the Teddy Bear Clinic, where we teach kids physical exam skills on their stuffed animals. We show them what it looks like to be in a healthcare setting and inspire them.",
-      href: "https://www.instagram.com/ccom_pedsinterestgroup/",
-    },
-    {
-      title: "Pending Research Projects",
-      tag: "Pending Research",
-      desc: "REVIEW ARTICLE: I am collaborating on a review of the use of cyproheptadine for appetite stimulation in pediatric feeding disorders. RETROSPECTIVE CHART REVIEW: I am collaborating on a retrospective chart review, analyzing the use of swallow studies for a cohort of pediatric patients in the feeding program.",
-      href: "#contact",
-    },
-  ];
-
   const stats = [
     { value: "2029 ", label: "MD Graduating Class" },
     { value: "2,000+ ", label: "Clinical Hours" },
@@ -92,7 +55,7 @@ export default function KatiePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[url('https://img.magnific.com/free-vector/geometric-pattern-background-vector-white_53876-128361.jpg?semt=ais_hybrid&w=740&q=80')]">
       {/* Hero */}
       <div className="flex min-h-screen items-center justify-center p-8">
         <div className="grid w-full max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
@@ -148,7 +111,7 @@ export default function KatiePage() {
       </div>
 
       {/* About */}
-      <div id="about" className="flex justify-center bg-[#4274D9] p-12">
+      <div id="about" className="flex justify-center bg-[#4274D9] p-8 md:p-24">
         <div className="grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
           <FadeIn>
             <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/45 transition hover:shadow-black/70">
@@ -183,14 +146,15 @@ export default function KatiePage() {
       {/* Projects */}
       <div id="work" className="flex flex-col items-center gap-8 p-12">
         <FadeIn className="w-full max-w-6xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#4274D9]">
+          <p className="font-semibold uppercase tracking-[0.3em] text-[#4274D9]">
             Experiences
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-[#0f1f4d]">
+          <h2 className="my-2 mt-2 font-display text-5xl font-bold text-[#0f1f4d]">
             Research, Work, & Volunteer Experience
           </h2>
+          <div className="mt-6 h-1 w-24 rounded-full bg-[#4274D9]" />
         </FadeIn>
-        <div className="grid w-full max-w-6xl grid-cols-1 gap-6 text-white md:grid-cols-3">
+        <div className="grid w-full max-w-6xl grid-cols-1 gap-10 text-white md:grid-cols-2">
           {projects.map((project, i) => (
             <FadeIn key={project.title} delay={i * 100}>
               <a
@@ -246,6 +210,8 @@ export default function KatiePage() {
           <h2 className="mt-3 font-display text-5xl font-bold text-[#0f1f4d]">
             Let&rsquo;s connect
           </h2>
+          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-[#4274D9]" />
+
           <p className="mt-4 flex items-center justify-center gap-2 text-lg text-gray-500">
             <Phone size={18} /> (319)-671-3807
           </p>
