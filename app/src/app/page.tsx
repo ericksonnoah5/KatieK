@@ -1,9 +1,18 @@
 "use client";
+import * as React from "react";
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowDownToLine, ArrowUpRight, Mail, Phone } from "lucide-react";
 
 import projects from "./data.json";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 function FadeIn({
   children,
@@ -43,6 +52,32 @@ function FadeIn({
     >
       {children}
     </div>
+  );
+}
+
+function ExperienceCard({ project }: { project: (typeof projects)[number] }) {
+  return (
+    <a
+      href={project.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-full flex-col rounded-2xl bg-[#4274D9] p-8 text-white shadow-xl shadow-[#4274D9]/30 transition"
+    >
+      <span className="w-fit rounded-full bg-[#95CCDD]/20 px-4 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#95CCDD] md:text-xs">
+        {project.tag}
+      </span>
+      <h3 className="mt-2 font-display text-xl font-bold text-[#FFFFFF] md:text-3xl">
+        {project.title}
+      </h3>
+      <div className="mt-4 h-1 w-24 rounded-full bg-[#95CCDD]"></div>
+
+      <p className="mt-3 text-sm leading-relaxed text-[#FFFFFF] md:text-lg">
+        {project.desc}
+      </p>
+      <span className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">
+        Learn More <ArrowUpRight size={18} />
+      </span>
+    </a>
   );
 }
 
@@ -109,7 +144,6 @@ export default function KatiePage() {
           </div>
         </div>
       </div>
-
       {/* About */}
       <div id="about" className="flex justify-center bg-[#4274D9] p-8 md:p-24">
         <div className="grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
@@ -154,45 +188,40 @@ export default function KatiePage() {
           </h2>
           <div className="mt-6 h-1 w-24 rounded-full bg-[#4274D9]" />
         </FadeIn>
-        <div className="grid w-full max-w-6xl grid-cols-1 gap-10 text-white md:grid-cols-2">
+        {/* Mobile: swipeable carousel */}
+        <Carousel className="w-full max-w-6xl md:hidden" opts={{ loop: true }}>
+          <CarouselContent>
+            {projects.map((project) => (
+              <CarouselItem key={project.title}>
+                <ExperienceCard project={project} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <CarouselPrevious className="static inset-y-auto left-auto my-0 translate-y-0" />
+            <CarouselNext className="static inset-y-auto right-auto my-0 translate-y-0" />
+          </div>
+        </Carousel>
+
+        {/* Desktop: grid */}
+        <div className="hidden w-full max-w-6xl grid-cols-1 gap-10 text-white md:grid md:grid-cols-2">
           {projects.map((project, i) => (
             <FadeIn key={project.title} delay={i * 100}>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-2xl bg-[#4274D9] p-8 text-white shadow-xl shadow-[#4274D9]/30 transition hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#4274D9]/55"
-              >
-                <span className="w-fit rounded-full bg-[#95CCDD]/20 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#95CCDD]">
-                  {project.tag}
-                </span>
-                <h3 className="mt-3 font-display text-3xl font-bold text-[#FFFFFF]">
-                  {project.title}
-                </h3>
-                <div className="mt-6 h-1 w-24 rounded-full bg-[#95CCDD]"></div>
-
-                <p className="mt-3 text-sm leading-relaxed text-[#FFFFFF] md:text-lg">
-                  {project.desc}
-                </p>
-                <span className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">
-                  Learn More <ArrowUpRight size={18} />
-                </span>
-              </a>
+              <ExperienceCard project={project} />
             </FadeIn>
           ))}
         </div>
       </div>
-
       {/* Stats */}
-      <div className="flex justify-center bg-[#0f1f4d] p-12">
-        <div className="grid w-full max-w-6xl grid-cols-2 gap-6 md:grid-cols-4">
+      <div className="flex justify-center bg-[#0f1f4d] p-8">
+        <div className="grid h-full w-full max-w-6xl grid-cols-2 gap-5 md:grid-cols-4">
           {stats.map((stat, i) => (
             <FadeIn key={stat.label} delay={i * 100} className="min-w-0">
-              <div className="h-full min-w-0 rounded-2xl bg-white/5 p-6 text-center shadow-xl transition hover:-translate-y-1.5 hover:bg-white/10 hover:shadow-2xl">
-                <p className="font-display text-3xl font-bold text-[#D4A843] sm:text-4xl md:text-5xl">
+              <div className="h-full rounded-3xl bg-white/5 p-4 text-center shadow-xl transition hover:-translate-y-1.5 hover:bg-white/10 hover:shadow-2xl">
+                <p className="font-display text-4xl font-bold text-[#D4A843] sm:text-4xl md:text-5xl">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-white/60 sm:text-sm">
+                <p className="mt-2 text-[12px] font-semibold uppercase tracking-widest text-white/60 sm:text-sm">
                   {stat.label}
                 </p>
               </div>
@@ -200,7 +229,6 @@ export default function KatiePage() {
           ))}
         </div>
       </div>
-
       {/* Contact */}
       <div id="contact" className="flex justify-center p-12 pb-20">
         <FadeIn className="w-full max-w-6xl text-center">
